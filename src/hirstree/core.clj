@@ -1,18 +1,17 @@
 (ns hirstree.core
   (:gen-class))
 
-(def answer
-  (let [character (read-line)]
-    (if (= character "1234")
-      (do (println "Correct")
-        false)
-      (do (println "False")
-        true))))
+(fn answer
+  [input boind]
+  (if (= input "1234")
+    (do (println "Correct")
+      false)
+    (do (println "False")
+      true)))
 
 (defn -main 
   []
-  (loop [iter true]
-    (let [iter answer])
-    (if (= iter false)
+  (loop [answer (read-line)]
+    (if (= answer false)
       false
-      (recur true))))
+      (recur (read-line)))))
