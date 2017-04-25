@@ -5,14 +5,14 @@
   (let [character (read-line)]
     (if (= character "1234")
       (do (println "Correct")
-        true)
+        false)
       (do (println "False")
-        false))))
+        true))))
 
 (defn -main 
   []
-  (loop [iter false]
+  (loop [iter true]
     (let [iter answer])
     (if (= iter false)
-      (recur false)
-      false)))
+      false
+      (recur true))))
