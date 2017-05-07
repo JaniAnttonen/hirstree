@@ -3,9 +3,13 @@
 
 (def oikeavastaus "ebin")
 
+; (defn paljasta
+;   [kirjain]
+;   ())
+
 (defn oikein
   [arvaus]
-  (if (= oikeavastaus arvaus)
+  (if (= arvaus oikeavastaus)
   true
   false))
 
@@ -16,7 +20,14 @@
 
 (defn -main 
   []
-  (loop [arvaus (kysy "Juuh elikkäs, arvaappa mikä sana on kyseessä:")]
-    (if (oikein arvaus)
-      (println "Vastaus oli oikein!")
-      (recur (kysy "Väärin, arvaa uudelleen:")))))
+  (loop [arvaus (kysy "Arvaa kokonaista sanaa, tai anna kirjain:")]
+    (if (= (count arvaus) 1)
+      (do 
+        (println "e___")
+        (recur (kysy "Arvaa lisää kirjaimia, tai arvaa koko sanaa:")))
+      (if (oikein arvaus)
+        (println "Vastaus oli oikein!")
+        (recur (kysy "Väärin, arvaa uudelleen, tai anna kirjain:")))
+    )
+  )
+)
