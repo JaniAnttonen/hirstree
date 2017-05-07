@@ -1,17 +1,20 @@
 (ns hirstree.core
   (:gen-class))
+(require 'clojure.string)
 
-(def oikeavastaus "ebin")
+(def oikeavastaus "eebenpuu")
 
-; (defn paljasta
-;   [kirjain]
-;   ())
+(defn paljasta
+  [kirjaimet]
+  (clojure.string/replace
+    oikeavastaus 
+    (re-pattern (str "[^" kirjaimet "]")) "_"))
 
 (defn oikein
   [arvaus]
   (if (= arvaus oikeavastaus)
-  true
-  false))
+    true
+    false))
 
 (defn kysy
   [kysymys]
@@ -20,14 +23,14 @@
 
 (defn -main 
   []
-  (loop [arvaus (kysy "Arvaa kokonaista sanaa, tai anna kirjain:")]
+  (loop [arvaus (kysy "Arvaa kokonaista sanaa, tai anna kirjain:")
+         kirjaimet ""]
     (if (= (count arvaus) 1)
       (do 
-        (println "e___")
-        (recur (kysy "Arvaa lisää kirjaimia, tai arvaa koko sanaa:")))
+        (println (paljasta (str arvaus kirjaimet)))
+        (recur 
+          (kysy "Arvaa lisää kirjaimia, tai arvaa koko sanaa:")
+          (str kirjaimet arvaus)))
       (if (oikein arvaus)
         (println "Vastaus oli oikein!")
-        (recur (kysy "Väärin, arvaa uudelleen, tai anna kirjain:")))
-    )
-  )
-)
+        (recur (kysy "Väärin, arvaa uudelleen, tai anna kirjain:") kirjaimet)))))
