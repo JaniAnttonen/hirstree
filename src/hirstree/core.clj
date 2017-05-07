@@ -1,17 +1,22 @@
 (ns hirstree.core
   (:gen-class))
 
-(fn answer
-  [input boind]
-  (if (= input "1234")
-    (do (println "Correct")
-      false)
-    (do (println "False")
-      true)))
+(def oikeavastaus "ebin")
+
+(defn oikein
+  [arvaus]
+  (if (= oikeavastaus arvaus)
+  true
+  false))
+
+(defn kysy
+  [kysymys]
+  (println kysymys)
+  (read-line))
 
 (defn -main 
   []
-  (loop [answer (read-line)]
-    (if (= answer false)
-      false
-      (recur (read-line)))))
+  (loop [arvaus (kysy "Juuh elikkäs, arvaappa mikä sana on kyseessä:")]
+    (if (oikein arvaus)
+      (println "Vastaus oli oikein!")
+      (recur (kysy "Väärin, arvaa uudelleen:")))))
