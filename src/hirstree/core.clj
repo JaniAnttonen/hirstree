@@ -25,9 +25,12 @@
   []
   (loop [arvaus (kysy "Arvaa kokonaista sanaa, tai anna kirjain:")
          kirjaimet ""]
+    (println "")
     (if (= (count arvaus) 1)
-      (do 
+      (do
+        (println (str "Yritetty löytää kirjainta " arvaus " sanasta:"))
         (println (paljasta (str arvaus kirjaimet)))
+        (println "")
         (recur 
           (kysy "Arvaa lisää kirjaimia, tai arvaa koko sanaa:")
           (str kirjaimet arvaus)))
