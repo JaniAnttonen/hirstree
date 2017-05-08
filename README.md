@@ -2,7 +2,7 @@
 
 ## Installation
 
-Download from releases.
+Download from [releases](https://github.com/JaniAnttonen/hirstree/releases).
 
 ## Development
 
