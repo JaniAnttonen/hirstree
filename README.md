@@ -1,4 +1,4 @@
-# Hirsipuu with Clojure
+# [Hirsipuu](http://bit.ly/2pSkI97) with Clojure
 
 ## Installation
 
