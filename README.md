@@ -12,3 +12,5 @@ Leiningen and Clojure must be installed on your machine. Then just clone/downloa
 ```bash
 lein run
 ```
+
+TODO: Dockerize the project.
