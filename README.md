@@ -4,18 +4,19 @@
 
 Download from [releases](https://github.com/JaniAnttonen/hirstree/releases).
 You need to have a working installation of docker and docker-compose on your computer.
+(Or you can just use leiningen if you're into that sort of stuff.)
 
 ## Development
 Sources under src/hirstree/
 
 
 ```bash
-make dev
+make dev OR lein run
 ```
 
 ## Build
 ```bash
-make build
+make build OR lein bin
 ```
 Builds an executable to target/base+system+user+dev/
 
