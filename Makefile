@@ -7,4 +7,5 @@ build:
 		docker-compose run --service-ports build
 
 run:
-		./target/base+system+user+dev/hirstree-0.1.0-SNAPSHOT
+		chmod +x target/base+system+user+dev/*
+		./target/base+system+user+dev/hirstree-0.1

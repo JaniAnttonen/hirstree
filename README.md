@@ -20,14 +20,7 @@ make build
 ```
 Builds an executable to target/base+system+user+dev/
 
-Mark as executable:
-
-```bash
-chmod +x target/base+system+user+dev/*
-```
-
-and run:
-
+## Run the built executable
 ```bash
 make run
 ```
