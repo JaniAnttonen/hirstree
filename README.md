@@ -11,17 +11,23 @@ Sources under src/hirstree/
 
 
 ```bash
-make dev OR lein run
+make dev
 ```
 
 ## Build
 ```bash
-make build OR lein bin
+make build
 ```
 Builds an executable to target/base+system+user+dev/
 
 Mark as executable:
 
-```chmod +x target/base+system+user+dev/*```
+```bash
+chmod +x target/base+system+user+dev/*
+```
 
-and run.
+and run:
+
+```bash
+make run
+```
