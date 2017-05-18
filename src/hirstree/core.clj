@@ -2,7 +2,14 @@
   (:gen-class))
 (require 'clojure.string)
 
-(def oikeavastaus "eebenpuu")
+(def sanat
+  (with-open [tiedosto (clojure.java.io/reader "src/hirstree/words.txt")]
+    (doall (line-seq tiedosto))))
+
+(def sanamäärä (count sanat))
+
+(def oikeavastaus
+  (nth sanat (rand-int sanamäärä)))
 
 (defn paljasta
   [kirjaimet]
