@@ -1,25 +1,22 @@
 version: '2'
 services:
 
-  dev:
+  base:
     image: clojure:latest
-    environment:
-     - LEIN_SILENT=true
     volumes:
      - .:/usr/src/app
     working_dir: /usr/src/app
+
+  dev:
+    extends: base
+    environment:
+     - LEIN_SILENT=true
     command: lein run
 
   build:
-    image: clojure:latest
-    volumes:
-     - .:/usr/src/app
-    working_dir: /usr/src/app
+    extends: base
     command: lein bin
 
   lint:
-    image: clojure:latest
-    volumes:
-     - .:/usr/src/app
-    working_dir: /usr/src/app
+    extends: base
     command: lein eastwood
