@@ -114,4 +114,6 @@
               (+ vaaratvastaukset 1)))))
 
       ;; Jos vääriä vastauksia on tullut jo 9 kpl, lopetetaan peli.
-      (println "Hävisit pelin."))))
+      (do
+        (println (str "Oikea sana olisi ollut " oikeavastaus))
+        (println "Hävisit pelin.")))))
