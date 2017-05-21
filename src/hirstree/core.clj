@@ -73,22 +73,24 @@
             (println (str "Kirjain " arvaus " löytyy sanasta."))
             (println (paljasta (str arvaus kirjaimet)))
             (println "")
-            (recur 
-              (kysy "Arvaa lisää kirjaimia, tai arvaa koko sanaa:")
-              (str kirjaimet arvaus)
-              vaaratvastaukset))
+            (if (oikein (paljasta (str arvaus kirjaimet)))
+              (println "Vastaus oli oikein!")
+              (recur 
+                (kysy "Arvaa lisää kirjaimia, tai arvaa koko sanaa:")
+                (str kirjaimet arvaus)
+                vaaratvastaukset)))
 
           ;; Kerrotaan pelaajalle väärästä arvauksesta,
           ;; lisätään yksi väärä vastaus ja aloitetaan uusi pelikierros
           (do
             (println (str "Kirjain " arvaus " ei löydy sanasta."))
             (println (paljasta (str arvaus kirjaimet)))
-            (println "")
             (println
               (str
                 "Sinulla on vielä varaa vastata "
                 (- 8 vaaratvastaukset)
                 " kertaa väärin."))
+            (println "")
             (recur
               (kysy "Arvaa lisää kirjaimia, tai arvaa koko sanaa:")
               kirjaimet
