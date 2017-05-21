@@ -35,8 +35,9 @@
 (defn oikeassavastauksessa
   [arvaus
    kirjaimet]
-  (when (not (clojure.string/includes? kirjaimet arvaus))
-    (clojure.string/includes? oikeavastaus arvaus)))
+  (if (not (clojure.string/includes? kirjaimet arvaus))
+    (clojure.string/includes? oikeavastaus arvaus)
+    (println "Olet arvannut jo tämän kirjaimen.")))
 
 ;;; Kysyy kysymyksen ja palauttaa pelaajan vastauksen
 (defn kysy
