@@ -35,7 +35,7 @@
 (defn oikeassavastauksessa
   [arvaus
    kirjaimet]
-  (when (not clojure.string/includes? kirjaimet arvaus)
+  (when (not (clojure.string/includes? kirjaimet arvaus))
     (clojure.string/includes? oikeavastaus arvaus)))
 
 ;;; Kysyy kysymyksen ja palauttaa pelaajan vastauksen
@@ -50,7 +50,7 @@
   (loop [arvaus (kysy "Arvaa kokonaista sanaa, tai anna kirjain:")
          kirjaimet ""
          vaaratvastaukset 0]
-    ;; Tulostetaan tyhjä rivi joka suorituskierroksella
+    ;; Tulostetaan yksi tyhjä rivi
     (println "")
 
     ;; Jatketaan pelin suorittamista,
@@ -69,7 +69,7 @@
           ;; Paljastetaan arvattu kirjain oikeasta vastauksesta,
           ;; näytetään pelaajalle sanan tila ja aloitetaan uusi pelikierros
           (do
-            (println (str "Yritetty löytää kirjainta " arvaus " sanasta:"))
+            (println (str "Kirjain " arvaus " löytyy sanasta."))
             (println (paljasta (str arvaus kirjaimet)))
             (println "")
             (recur 
@@ -83,21 +83,32 @@
             (println (str "Kirjain " arvaus " ei löydy sanasta."))
             (println (paljasta (str arvaus kirjaimet)))
             (println "")
+            (println
+              (str
+                "Sinulla on vielä varaa vastata "
+                (- 8 vaaratvastaukset)
+                " kertaa väärin."))
             (recur
               (kysy "Arvaa lisää kirjaimia, tai arvaa koko sanaa:")
-              (str kirjaimet arvaus)
+              kirjaimet
               (+ vaaratvastaukset 1))))
 
-      ;; Jos arvaus on enemmän kuin yksi kirjain,
-      ;; tarkistetaan onko se oikein, jolloin lopetetaan peli.
-      ;; Jos väärin, kerrotaan arvauksen vääryys, lisätään väärä vastaus
-      ;; ja aloitetaan uusi pelikierros
-      (if (oikein arvaus)
-        (println "Vastaus oli oikein!")
-        (recur
-          (kysy "Väärin, arvaa uudelleen, tai anna kirjain:")
-          kirjaimet)
-          (+ vaaratvastaukset 1)))
+        ;; Jos arvaus on enemmän kuin yksi kirjain,
+        ;; tarkistetaan onko se oikein, jolloin lopetetaan peli.
+        ;; Jos väärin, kerrotaan arvauksen vääryys, lisätään väärä vastaus
+        ;; ja aloitetaan uusi pelikierros
+        (if (oikein arvaus)
+          (println "Vastaus oli oikein!")
+          (do
+            (println
+              (str
+                "Sinulla on vielä varaa vastata "
+                (- 8 vaaratvastaukset)
+                " kertaa väärin."))
+            (recur
+              (kysy "Väärin, arvaa uudelleen, tai anna kirjain:")
+              kirjaimet
+              (+ vaaratvastaukset 1)))))
 
       ;; Jos vääriä vastauksia on tullut jo 9 kpl, lopetetaan peli.
       (println "Hävisit pelin."))))
