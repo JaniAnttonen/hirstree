@@ -1,4 +1,4 @@
-# [Hirsipuu](http://bit.ly/2pSkI97) with Clojure
+# [Hirsipuu](https://en.wikipedia.org/wiki/Hangman_%28game%29) with Clojure
 
 ## Installation
 
