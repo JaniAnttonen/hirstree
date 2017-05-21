@@ -5,4 +5,4 @@
   :main ^:skip-aot hirstree.core
   :target-path "target/%s"
   :profiles {:uberjar {:aot :all}
-             :dev {:plugins [[lein-binplus "0.6.2"]]}})
+             :dev {:plugins [[lein-binplus "0.6.2"], [jonase/eastwood "0.2.3"]]}})

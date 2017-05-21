@@ -88,16 +88,16 @@
               (str kirjaimet arvaus)
               (+ vaaratvastaukset 1))))
 
-        ;; Jos arvaus on enemmän kuin yksi kirjain,
-        ;; tarkistetaan onko se oikein, jolloin lopetetaan peli.
-        ;; Jos väärin, kerrotaan arvauksen vääryys, lisätään väärä vastaus
-        ;; ja aloitetaan uusi pelikierros
-        (if (oikein arvaus)
-          (println "Vastaus oli oikein!")
-          (recur
-            (kysy "Väärin, arvaa uudelleen, tai anna kirjain:")
-            kirjaimet)
-            (+ vaaratvastaukset 1)))
+      ;; Jos arvaus on enemmän kuin yksi kirjain,
+      ;; tarkistetaan onko se oikein, jolloin lopetetaan peli.
+      ;; Jos väärin, kerrotaan arvauksen vääryys, lisätään väärä vastaus
+      ;; ja aloitetaan uusi pelikierros
+      (if (oikein arvaus)
+        (println "Vastaus oli oikein!")
+        (recur
+          (kysy "Väärin, arvaa uudelleen, tai anna kirjain:")
+          kirjaimet)
+          (+ vaaratvastaukset 1)))
 
       ;; Jos vääriä vastauksia on tullut jo 9 kpl, lopetetaan peli.
       (println "Hävisit pelin."))))
