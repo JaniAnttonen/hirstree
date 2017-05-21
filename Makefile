@@ -8,7 +8,7 @@ build:
 
 run:
 		chmod +x target/base+system+user+dev/*
-		./target/base+system+user+dev/hirstree-0.1
+		./target/base+system+user+dev/hirstree-1.0
 
 lint:
 		docker-compose run --service-ports lint
