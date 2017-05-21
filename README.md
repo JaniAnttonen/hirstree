@@ -24,3 +24,4 @@ Builds an executable to target/base+system+user+dev/
 ```bash
 make run
 ```
+On some operation systems this by default shows an error. In that case, execute ```make run``` with admin privileges, eg. ```sudo make run``` on an [UNIX system](https://www.reddit.com/r/itsaunixsystem/)
